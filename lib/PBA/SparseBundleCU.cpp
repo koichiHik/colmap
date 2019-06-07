@@ -930,7 +930,7 @@ void SparseBundleCU::DebugProjections() {
       e1 += (dx1 * dx1 + dy1 * dy1);
       e2 += (dx1 * dx1 + dy1 * dy1);
     }
-    if (!isfinite(dx1) || !isfinite(dy1))
+    if (!std::isfinite(dx1) || !std::isfinite(dy1))
       std::cout << "x = " << xx << " y = " << yy << " z = " << z << '\n'
                 << "t0 = " << t[0] << " t1 = " << t[1] << " t2 = " << t[2]
                 << '\n' << "p0 = " << p[0] << " p1 = " << p[1]
@@ -1224,7 +1224,7 @@ int SparseBundleCU::SolveNormalEquationPCGX(float lambda) {
   if (__verbose_cg_iteration)
     std::cout << " --0,\t alpha = " << alpha0
               << ", t = " << BundleTimerGetNow(TIMER_CG_ITERATION) << "\n";
-  if (!isfinite(alpha0)) {
+  if (!std::isfinite(alpha0)) {
     return 0;
   }
   if (alpha0 == 0) {
@@ -1284,7 +1284,7 @@ int SparseBundleCU::SolveNormalEquationPCGX(float lambda) {
                 << ", t = " << BundleTimerGetNow(TIMER_CG_ITERATION) << "\n";
 
     ///////////////////////////////////////////////////
-    if (!isfinite(alphak) || rtz_ratio > __cg_norm_guard) {
+    if (!std::isfinite(alphak) || rtz_ratio > __cg_norm_guard) {
       __recent_cg_status = 'X';
       break;
     }  // something doesn't converge..
@@ -1346,7 +1346,7 @@ int SparseBundleCU::SolveNormalEquationPCGB(float lambda) {
   if (__verbose_cg_iteration)
     std::cout << " --0,\t alpha = " << alpha0
               << ", t = " << BundleTimerGetNow(TIMER_CG_ITERATION) << "\n";
-  if (!isfinite(alpha0)) {
+  if (!std::isfinite(alpha0)) {
     return 0;
   }
   if (alpha0 == 0) {
@@ -1408,7 +1408,7 @@ int SparseBundleCU::SolveNormalEquationPCGB(float lambda) {
                 << ", t = " << BundleTimerGetNow(TIMER_CG_ITERATION) << "\n";
 
     ///////////////////////////////////////////////////
-    if (!isfinite(alphak) || rtz_ratio > __cg_norm_guard) {
+    if (!std::isfinite(alphak) || rtz_ratio > __cg_norm_guard) {
       __recent_cg_status = 'X';
       break;
     }  // something doesn't converge..
@@ -1670,7 +1670,7 @@ void SparseBundleCU::NonlinearOptimizeLM() {
     float residual_reduction = _projection_sse - new_residual;
 
     // do we find a better solution?
-    if (isfinite(new_residual) && residual_reduction > 0) {
+    if (std::isfinite(new_residual) && residual_reduction > 0) {
       ////compute relative norm change
       float relative_reduction = 1.0f - (new_residual / _projection_sse);
 

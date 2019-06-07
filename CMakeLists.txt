@@ -31,11 +31,14 @@
 
 cmake_minimum_required(VERSION 3.0)
 
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 project(COLMAP)
 
 set(COLMAP_VERSION "3.6")
 set(COLMAP_VERSION_NUMBER "3600")
-
 
 ################################################################################
 # Include CMake dependencies
@@ -63,7 +66,7 @@ option(TESTS_ENABLED "Whether to build test binaries" OFF)
 option(PROFILING_ENABLED "Whether to enable google-perftools linker flags" OFF)
 option(CGAL_ENABLED "Whether to enable the CGAL library" ON)
 option(BOOST_STATIC "Whether to enable static boost library linker flags" ON)
-set(CUDA_ARCHS "Auto" CACHE STRING "List of CUDA architectures for which to \
+set(CUDA_ARCHS "Pascal" CACHE STRING "List of CUDA architectures for which to \
 generate code, e.g., Auto, All, Maxwell, Pascal, ...")
 
 if(TESTS_ENABLED)
