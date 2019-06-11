@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ROOT_3RD=~/workspace/3rdParty
-#CMAKE_BUILD_TYPE=Debug
-CMAKE_BUILD_TYPE=Release
+CMAKE_BUILD_TYPE=Debug
+#CMAKE_BUILD_TYPE=Release
 Ceres_DIR=${ROOT_3RD}/google_ceres_solver/install/lib/cmake
 
 CMAKE_BIN=${ROOT_3RD}/cmake_repo/cmake-3.13.3/install/bin/cmake
